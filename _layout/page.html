@@ -1,0 +1,27 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    _                                           ___
+   / \__      _____  ___  ___  _ __ ___   ___  |_ _|_ __   ___
+  / _ \ \ /\ / / _ \/ __|/ _ \| '_ ` _ \ / _ \  | || '_ \ / __|
+ / ___ \ V  V /  __/\__ \ (_) | | | | | |  __/  | || | | | (__
+/_/   \_\_/\_/ \___||___/\___/|_| |_| |_|\___| |___|_| |_|\___|
+  Growing High-Tech Startups in Lexington, Kentucky. #horses
+-->
+    <head>
+        {% include head.html %}
+    </head>
+    <body>
+        <header>
+            {% include nav.html %}
+        </header>
+        <div class="{{ page.title | split:' ' | first }}">
+        {{content}}
+        </div>
+        {% include footer.html %}
+
+        {% include js.html %}
+    </body>
+</html>
