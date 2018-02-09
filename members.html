@@ -46,27 +46,21 @@ redirect_from: /members.php
         
             <div id="portfolio-projects" align=center>
                 <ul id="projects">
-                	<?php
-                		$raw_names = file('_include/members.txt', FILE_IGNORE_NEW_LINES);
-                		$names = array();
-                		foreach($raw_names as $row){
-                			$names[] = explode(";", $row);
-                		}
-                		foreach($names as $name){
-                    	echo '<li class="item-project span3 design" style="width:120px;height:120px;margin-left:73px;">
-                        	<div class="title">
-                        	    <a href="'.$name[1].'" target="_blank">'.$name[0].'<br/>'.$name[2].'</a>
-                        	</div>
-                        	<span class="arrow-port"></span>
-                        
-                        	<a class="hover-wrap fancybox" href="'.$name[1].'" data-fancybox-group="gallery" title="'.$name[0].'" target="_blank">
-                            	<img src="_include/img/'.$name[0].'.jpg"/>
-                            	<div class="overlay"></div>
-                            	<i class="font-icon-plus"></i>
-                       		</a>
-                    	</li>';
-                    	}
-                    ?>         
+                    {% for member in site.data.members %}
+                    <li class="item-project span3 design" style="width:120px;height:120px;margin-left:73px;">
+                        <div class="title">
+                            <a href="{{ member.website }}" target="_blank">{{ member.name }}<br/>{{ member.title }}</a>
+                        </div>
+                        <span class="arrow-port"></span>
+
+                        <a class="hover-wrap fancybox" href="{{ member.website }}" data-fancybox-group="gallery" title="{{ member.name }}" target="_blank">
+                            <img src="/img/{{ member.name | remove: ' ' }}.jpg"/>
+                            <div class="overlay"></div>
+                            <i class="font-icon-plus"></i>
+                        </a>
+                    </li>
+                    {% endfor %}
+                	        
                 </ul>
             </div>
         </div>
